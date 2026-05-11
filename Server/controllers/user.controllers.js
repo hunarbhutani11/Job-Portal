@@ -52,7 +52,8 @@ export const register = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -79,7 +80,7 @@ export const login = async (req, res) => {
         const isPasswordMatch = await bcrypt.compare(password, user.password);
 
         // check role is correct or not and also verify password
-        if (!isPasswordMatch || role != user.role) {
+        if (!isPasswordMatch || role !== user.role) {
             return res.status(400).json({
                 message: "Incorrect Credentials",
                 success: false
@@ -117,6 +118,7 @@ export const login = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -132,6 +134,7 @@ export const logout = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -203,6 +206,7 @@ export const updateProfile = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 

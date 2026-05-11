@@ -9,7 +9,7 @@ export const postJob = async (req, res) => {
 
         const userId = req.id;
 
-        if (!title || !description || !location || !requirements || !salary || !jobType || experience < 0 || !position || !companyId) {
+        if (!title || !description || !location || !requirements || !salary || !jobType || experience === undefined || experience === null || !position || !companyId) {
             return res.status(400).json({
                 message: "Something is missing",
                 success: false,
@@ -37,6 +37,7 @@ export const postJob = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -75,6 +76,7 @@ export const getAllJobs = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -91,7 +93,7 @@ export const getJobById = async (req, res) => {
             }
         );
         if (!job) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: "Job not found",
                 success: false,
             })
@@ -105,6 +107,7 @@ export const getJobById = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -114,12 +117,9 @@ export const getJobById = async (req, res) => {
 export const getRecruiterJobs = async (req, res) => {
     try {
         const recruiterId = req.id;
-        const jobs = await Job.find({ created_by: recruiterId }).populate(
-            {
-                path: "company",
-                createdAt: -1,
-            }
-        );
+        const jobs = await Job.find({ created_by: recruiterId }).populate({
+            path: "company",
+        }).sort({ createdAt: -1 });
         if (!jobs) {
             return res.status(404).json({
                 message: "No jobs found",
@@ -136,6 +136,7 @@ export const getRecruiterJobs = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 

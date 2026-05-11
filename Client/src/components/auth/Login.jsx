@@ -4,7 +4,7 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { Button } from '../ui/button'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
@@ -48,7 +48,7 @@ const Login = () => {
 
     } catch (error) {
       console.log(error.message);
-      toast.error(error.response.data.message)
+      toast.error(error.response?.data?.message || "Something went wrong")
     } finally {
       dispatch(setLoading(false));
     }

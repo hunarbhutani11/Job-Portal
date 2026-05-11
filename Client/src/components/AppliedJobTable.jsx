@@ -30,7 +30,7 @@ const AppliedJobTable = () => {
                         <span className='text-sm hover:text-fuchsia-400'>You haven't applied to any jobs yet.</span>
                     }
                     {
-                        allAppliedJobs.length >= 0 && allAppliedJobs?.map((item, index) => (
+                        allAppliedJobs.length > 0 && allAppliedJobs?.map((item, index) => (
                             <TableRow key={index}>
                                 <TableCell>{item?.createdAt.split("T")[0]}</TableCell>
                                 <TableCell>{item?.job?.title}</TableCell>

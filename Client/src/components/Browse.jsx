@@ -22,8 +22,6 @@ const Browse = () => {
 
         return () => {
             dispatch(setSearchedQuery(""));
-            console.log("jiooo");
-
         }
     }, [dispatch])
 

@@ -26,7 +26,7 @@ export const applyJob = async (req, res) => {
 
         // check if the job exists
         const job = await Job.findById(jobId);
-        if (!jobId) {
+        if (!job) {
             return res.status(404).json({
                 message: "Job not exists",
                 success: false,
@@ -50,6 +50,7 @@ export const applyJob = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 
@@ -85,12 +86,9 @@ export const getAppliedJobs = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
-
-
-
-// role === "recruiter"
 
 export const getApplicants = async (req, res) => {
     try {
@@ -117,10 +115,9 @@ export const getApplicants = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
-
-// role === "recruiter"
 
 export const updateStatus = async (req, res) => {
     try {
@@ -142,6 +139,7 @@ export const updateStatus = async (req, res) => {
 
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
 

@@ -8,9 +8,6 @@ import { motion } from 'framer-motion'
 import useGetAllJobs from '@/hooks/useGetAllJobs'
 import { setSearchedQuery } from '@/redux/jobSlice'
 import { Button } from './ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
-import { Avatar, AvatarImage } from './ui/avatar'
-import { LogOut, User2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 
@@ -59,8 +56,6 @@ function Jobs() {
     useEffect(() => {
         return () => {
             dispatch(setSearchedQuery(""));
-            console.log("trr");
-
         }
     }, [dispatch])
 
