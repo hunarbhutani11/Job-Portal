@@ -30,7 +30,7 @@ function Profile() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{}}
                 className='w-full px-[6%] max-sm:px-[2%]'>
-                <div className=' bg-white border border-gray-200 rounded-2xl my-5 p-8 max-sm:p-4 '>
+                <div className='bg-[#110e26]/60 border border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.5)] rounded-2xl my-5 p-8 max-sm:p-4 '>
                     <div className='flex justify-between'>
                         <div className='flex items-center gap-4'>
 
@@ -97,7 +97,7 @@ function Profile() {
 
             </motion.div>
 
-            <div className='bg-white rounded-2xl mx-[10%] max-sm:mx-[6%] mt-7 mb-14'>
+            <div className='bg-[#110e26]/60 border border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.5)] rounded-2xl mx-[10%] max-sm:mx-[6%] mt-7 mb-14 p-5'>
                 <h1 className='font-bold text-lg my-5'>Applied Job</h1>
                 {/* table */}
                 <AppliedJobTable />
