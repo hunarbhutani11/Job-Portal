@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
 import { Button } from './ui/button'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -36,21 +35,15 @@ function CategoryCarousel() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{}}
         >
-            <Carousel className="w-full max-sm:max-w-[234px] sm:max-w-xl mx-auto my-10">
-                <CarouselContent>
-                    {
-                        category.map((cat, index) => (
-                            <CarouselItem key={index} className="basis-[60%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                                <Button onClick={() => searchJobHandler(cat)} variant="outline" className="rounded-full cursor-pointer hover:scale-105 duration-300 transition-all bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white">
-                                    {cat}
-                                </Button>
-                            </CarouselItem>
-                        ))
-                    }
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-            </Carousel>
+            <div className="flex flex-wrap justify-center gap-4 my-10 max-w-5xl mx-auto px-4">
+                {
+                    category.map((cat, index) => (
+                        <Button key={index} onClick={() => searchJobHandler(cat)} variant="outline" className="rounded-full cursor-pointer hover:scale-105 duration-300 transition-all bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white px-6 py-2">
+                            {cat}
+                        </Button>
+                    ))
+                }
+            </div>
         </motion.div>
     )
 }
